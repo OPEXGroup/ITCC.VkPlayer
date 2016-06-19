@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VkNet", "vk\VkNet\VkNet.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Griffin.Core", "ITCC.Library\Griffin.Framework\src\Griffin.Framework\Griffin.Core\Griffin.Core.csproj", "{744709D5-D4D5-4551-9EBD-CBD7BDF58F5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITCC.UI", "ITCC.Library\ITCC.UI\ITCC.UI.csproj", "{07D36841-8876-437C-B7A4-CBF1012513EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{744709D5-D4D5-4551-9EBD-CBD7BDF58F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{744709D5-D4D5-4551-9EBD-CBD7BDF58F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{744709D5-D4D5-4551-9EBD-CBD7BDF58F5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D36841-8876-437C-B7A4-CBF1012513EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D36841-8876-437C-B7A4-CBF1012513EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D36841-8876-437C-B7A4-CBF1012513EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D36841-8876-437C-B7A4-CBF1012513EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
