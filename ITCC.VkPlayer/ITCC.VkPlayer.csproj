@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +57,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Enums\LoggerMode.cs" />
+    <Compile Include="Logging\LoggerManager.cs" />
+    <Compile Include="UI\Common\Helpers.cs" />
     <Compile Include="UI\Windows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -63,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Utils\Confuguration.cs" />
     <Page Include="UI\Windows\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,11 +116,16 @@
       <Project>{bbc8b7e2-bfc2-4b03-bd01-5b6bd10649c1}</Project>
       <Name>ITCC.Logging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ITCC.Library\ITCC.UI\ITCC.UI.csproj">
+      <Project>{07D36841-8876-437C-B7A4-CBF1012513EB}</Project>
+      <Name>ITCC.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\vk\VkNet\VkNet.csproj">
       <Project>{9cb320ee-5f9b-4df3-9897-c3d20c296de7}</Project>
       <Name>VkNet</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
