@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ITCC.Logging;
 using ITCC.VkPlayer.Enums;
 using ITCC.VkPlayer.Interfaces;
 using ITCC.VkPlayer.UI.Common;
@@ -24,6 +26,8 @@ namespace ITCC.VkPlayer.UI.Windows
     /// </summary>
     public partial class AudiosWindow : Window, ILongTaskRunner
     {
+        private const string DurationFormat = @"mm\:ss";
+
         private ObservableCollection<AudioViewModel> _audioViewModels;
         private AudioViewModel _activeAudio;
         private int _activeIndex;
@@ -31,7 +35,8 @@ namespace ITCC.VkPlayer.UI.Windows
         private bool _autoplay;
         private bool _shuffle;
         private bool _repeat;
-        private Stack<int> _playedSongs = new Stack<int>(); 
+        private Stack<int> _playedSongs = new Stack<int>();
+        private readonly Timer _progrssBarTimer = new Timer(1000);
         private readonly MediaPlayer _player = new MediaPlayer();
 
         public AudiosWindow()
@@ -39,6 +44,20 @@ namespace ITCC.VkPlayer.UI.Windows
             InitializeComponent();
 
             _player.MediaEnded += PlayerOnMediaEnded;
+            _progrssBarTimer.Elapsed += ProgrssBarTimerOnElapsed;
+            _progrssBarTimer.Start();
+        }
+
+        private void ProgrssBarTimerOnElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
+        {
+            if (!_isPlaying)
+                return;
+
+            App.RunOnUiThread(() =>
+            {
+                PlayProgressBar.Value = 100*_player.Position.TotalSeconds/_activeAudio.Duration.TotalSeconds;
+                DurationLabel.Content = $"{_player.Position.ToString(DurationFormat)}/{_activeAudio.Duration.ToString(DurationFormat)}";
+            });
         }
 
         public void BeginOperation(string message)
@@ -69,6 +88,7 @@ namespace ITCC.VkPlayer.UI.Windows
 
         private void SetActiveElements(Button button, AudioViewModel audio)
         {
+            PlayProgressBar.Value = 0;
             _activeAudio = audio;
             audio.IsActive = true;
             _isPlaying = true;
@@ -79,12 +99,14 @@ namespace ITCC.VkPlayer.UI.Windows
         {
             _player.Pause();
             _isPlaying = false;
+            TogglePlayButton.Content = "Играть";
         }
 
         private void Resume()
         {
             _player.Play();
             _isPlaying = true;
+            TogglePlayButton.Content = "Пауза";
         }
 
         private async Task StartPlaying(AudioViewModel audio)
@@ -176,7 +198,6 @@ namespace ITCC.VkPlayer.UI.Windows
             AudiosListView.ItemsSource = _audioViewModels;
 
             EndOperation();
-
         }
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -259,6 +280,18 @@ namespace ITCC.VkPlayer.UI.Windows
             {
                 Resume();
             }
+        }
+
+        private void PlayProgressBar_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (_activeAudio == null)
+                return;
+            var position = e.GetPosition(PlayProgressBar);
+            var percent = position.X/PlayProgressBar.ActualWidth;
+            _player.Position = TimeSpan.FromSeconds(_activeAudio.Duration.TotalSeconds*percent);
+
+            PlayProgressBar.Value = 100 * _player.Position.TotalSeconds / _activeAudio.Duration.TotalSeconds;
+            DurationLabel.Content = $"{_player.Position.ToString(DurationFormat)}/{_activeAudio.Duration.ToString(DurationFormat)}";
         }
     }
 }
