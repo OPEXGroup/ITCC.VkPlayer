@@ -16,6 +16,7 @@ namespace ITCC.VkPlayer
     /// </summary>
     public partial class App : Application
     {
+        public static readonly ApplicationContext Context = new ApplicationContext();
         private static ILongTaskRunner _currentRunner;
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -87,6 +88,21 @@ namespace ITCC.VkPlayer
             current.Closing -= ClosingHandler;
             current.Close();
             LogMessage(LogLevel.Debug, $"Went to window {typeof(TWindow).Name}");
+        }
+
+        public static void LoadSingletonWindow<TWindow>(Window current)
+            where TWindow : Window, new()
+        {
+            var singletonWindow = Current.Windows.OfType<TWindow>().SingleOrDefault();
+            if (singletonWindow != null)
+            {
+                singletonWindow.Activate();
+                return;
+            }
+            singletonWindow = new TWindow();
+            singletonWindow.Top = current.Top + (current.Height - singletonWindow.Height) / 2;
+            singletonWindow.Left = current.Left + (current.Width - singletonWindow.Width) / 2;
+            singletonWindow.Show();
         }
 
         private void App_OnExit(object sender, ExitEventArgs e)

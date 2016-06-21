@@ -15,6 +15,10 @@ namespace ITCC.VkPlayer.Utils
             {
                 var appSettings = ConfigurationManager.AppSettings;
 
+                AppId = Convert.ToUInt64(appSettings["AppId"]);
+                Username = appSettings["Username"];
+                Password = appSettings["Password"];
+
                 LogLevel = (LogLevel)Enum.Parse(typeof(LogLevel), appSettings["LogLevel"]);
                 LoggerMode = (LoggerMode)Enum.Parse(typeof(LoggerMode), appSettings["LoggerMode"]);
                 MessageLevel = (LogLevel)Enum.Parse(typeof(LogLevel), appSettings["MessageLevel"]);
@@ -34,6 +38,14 @@ namespace ITCC.VkPlayer.Utils
                 throw new ApplicationException("Error reading application configuration", ex);
             }
         }
+
+        #region authorizarion
+        public static ulong AppId { get; private set; }
+
+        public static string Username { get; private set; }
+
+        public static string Password { get; private set; }
+        #endregion
 
         #region log
 

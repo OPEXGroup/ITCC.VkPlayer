@@ -3,10 +3,62 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ITCC.VkPlayer.UI.Windows"
+        xmlns:controls="clr-namespace:ITCC.VkPlayer.UI.Controls"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="300" Width="300">
+        Title="Окно входа" MinHeight="380" MinWidth="240"
+        Height="320" Width="320"
+        Padding="-1">
     <Grid>
-        
+        <controls:InProgressControl x:Name="InProgressControl" />
+
+        <Grid x:Name="MainGrid"
+              Margin="0,20,0,0">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label x:Name="UsernameLabel"
+                       Grid.Row="0"
+                       Content="Логин" />
+                <TextBox x:Name="UsernameTextBox"
+                         Grid.Row="1"
+                         Margin="10,0,10,20"
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top" />
+
+
+                <Label x:Name="PasswordLabel"
+                       Grid.Row="2"
+                       Content="Пароль" />
+                <PasswordBox x:Name="PasswordPasswordBox"
+                             Grid.Row="3"
+                             Margin="10,0,10,20"
+                             VerticalAlignment="Top" />
+
+
+                <Button x:Name="LoginButton"
+                        Grid.Row="4"
+                        HorizontalAlignment="Right"
+                        Margin="10,0,10,20"
+                        Content="Вход"
+                        Click="LoginButton_Click"
+                        IsDefault="True" />
+            </Grid>
+
+            <controls:ExitHelpFooterControl
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Stretch" />
+        </Grid>
     </Grid>
 </Window>

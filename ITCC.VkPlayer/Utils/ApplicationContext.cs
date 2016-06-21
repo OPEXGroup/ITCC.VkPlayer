@@ -7,8 +7,8 @@ using VkNet;
 
 namespace ITCC.VkPlayer.Utils
 {
-    internal static class ApplicationContext
+    public class ApplicationContext
     {
-        public static ApiRunner ApiRunner { get; } = new ApiRunner();
+        public ApiRunner ApiRunner { get; } = new ApiRunner();
     }
 }

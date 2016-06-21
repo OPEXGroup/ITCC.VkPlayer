@@ -86,6 +86,9 @@
     <Compile Include="Interfaces\ILongTaskRunner.cs" />
     <Compile Include="Logging\LoggerManager.cs" />
     <Compile Include="UI\Common\Helpers.cs" />
+    <Compile Include="UI\Controls\ExitHelpFooterControl.xaml.cs">
+      <DependentUpon>ExitHelpFooterControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Controls\InProgressControl.xaml.cs">
       <DependentUpon>InProgressControl.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
     <Compile Include="Utils\ApplicationContext.cs" />
     <Compile Include="Utils\Confuguration.cs" />
     <Page Include="Themes\ApplicationTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Controls\ExitHelpFooterControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
