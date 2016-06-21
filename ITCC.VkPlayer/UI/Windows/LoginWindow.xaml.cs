@@ -55,6 +55,10 @@ namespace ITCC.VkPlayer.UI.Windows
             var result = await App.Context.ApiRunner.AuthorizeAsync(UsernameTextBox.Text, PasswordPasswordBox.Password);
             if (result != SimpleOperationStatus.Ok)
                 Helpers.ShowWarning("Неудачная попытка входа");
+            else
+            {
+                App.GoToWindow<AudiosWindow>(this);
+            }
             EndOperation();
         }
     }

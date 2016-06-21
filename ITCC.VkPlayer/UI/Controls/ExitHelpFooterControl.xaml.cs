@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using ITCC.VkPlayer.UI.Common;
+using ITCC.VkPlayer.UI.Windows;
 
 namespace ITCC.VkPlayer.UI.Controls
 {
@@ -21,6 +22,7 @@ namespace ITCC.VkPlayer.UI.Controls
 
         private void HelpButton_OnClick(object sender, RoutedEventArgs e)
         {
+            App.LoadSingletonWindow<HelpWindow>(Window.GetWindow(this));
         }
     }
 }

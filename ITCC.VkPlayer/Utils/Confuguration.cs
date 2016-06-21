@@ -26,11 +26,18 @@ namespace ITCC.VkPlayer.Utils
                 LogSavingPeriod = Convert.ToDouble(ConfigurationManager.AppSettings["LogSavingPeriod"]);
                 MaxWindowEntries = Convert.ToInt32(ConfigurationManager.AppSettings["MaxWindowEntries"]);
 
+                MusicCacheFolder = appSettings["MusicCacheFolder"];
+                KeepCache = Convert.ToBoolean(appSettings["KeepCache"]);
+
                 LogDirectory = Environment.CurrentDirectory + "\\Log";
 
                 if (!Directory.Exists(LogDirectory))
                 {
                     Directory.CreateDirectory(LogDirectory);
+                }
+                if (!Directory.Exists(MusicCacheFolder))
+                {
+                    Directory.CreateDirectory(MusicCacheFolder);
                 }
             }
             catch (Exception ex)
@@ -66,7 +73,9 @@ namespace ITCC.VkPlayer.Utils
         #endregion
 
         #region utils
+        public static string MusicCacheFolder { get; private set; }
 
+        public static bool KeepCache { get; private set; }
         #endregion
     }
 }

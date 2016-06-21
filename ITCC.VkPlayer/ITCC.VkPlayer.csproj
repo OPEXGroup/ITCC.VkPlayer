@@ -92,6 +92,12 @@
     <Compile Include="UI\Controls\InProgressControl.xaml.cs">
       <DependentUpon>InProgressControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Windows\AudiosWindow.xaml.cs">
+      <DependentUpon>AudiosWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Windows\HelpWindow.xaml.cs">
+      <DependentUpon>HelpWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Windows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -102,6 +108,8 @@
     <Compile Include="Utils\ApiRunner.cs" />
     <Compile Include="Utils\ApplicationContext.cs" />
     <Compile Include="Utils\Confuguration.cs" />
+    <Compile Include="Utils\OperationResult.cs" />
+    <Compile Include="ViewModels\AudioViewModel.cs" />
     <Page Include="Themes\ApplicationTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +119,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Controls\InProgressControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\AudiosWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Windows\HelpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
