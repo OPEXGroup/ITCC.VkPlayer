@@ -35,6 +35,7 @@ namespace ITCC.VkPlayer.UI.Windows
         private bool _autoplay;
         private bool _shuffle;
         private bool _repeat;
+        private bool _justLoaded = false;
         private Stack<int> _playedSongs = new Stack<int>();
         private readonly Timer _progrssBarTimer = new Timer(1000);
         private readonly MediaPlayer _player = new MediaPlayer();
@@ -104,6 +105,10 @@ namespace ITCC.VkPlayer.UI.Windows
 
         private void Resume()
         {
+            if (_justLoaded)
+            {
+                GoToNextSong();
+            }
             _player.Play();
             _isPlaying = true;
             TogglePlayButton.Content = "Пауза";
@@ -136,7 +141,7 @@ namespace ITCC.VkPlayer.UI.Windows
             if (!_playedSongs.Any())
                 return 0;
 
-            if (_activeIndex < _audioViewModels.Count)
+            if (_activeIndex < _audioViewModels.Count - 1)
                 return _activeIndex + 1;
             return _repeat ? 0 : -1;
         }
@@ -158,7 +163,9 @@ namespace ITCC.VkPlayer.UI.Windows
 
         private async Task GoToNextSong()
         {
-            _playedSongs.Push(_activeIndex);
+            if (! _justLoaded)
+                _playedSongs.Push(_activeIndex);
+            _justLoaded = false;
             var index = SelectNextSongIndex();
             if (index == -1)
             {
@@ -189,6 +196,7 @@ namespace ITCC.VkPlayer.UI.Windows
                 EndOperation();
                 return;
             }
+            _justLoaded = true;
 
             _audioViewModels = new ObservableCollection<AudioViewModel>(result.Result.Select(AudioViewModel.FromAudio));
             foreach (var viewModel in _audioViewModels)
@@ -225,6 +233,7 @@ namespace ITCC.VkPlayer.UI.Windows
                 StopActiveAudio();
             }
 
+            _playedSongs.Push(_audioViewModels.IndexOf(audio));
             await StartPlaying(audio);
             
             SetActiveElements(button, audio);
