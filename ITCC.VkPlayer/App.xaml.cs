@@ -1,7 +1,10 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using ITCC.Logging;
 using ITCC.UI.Windows;
+using ITCC.VkPlayer.Interfaces;
 using ITCC.VkPlayer.Logging;
 using ITCC.VkPlayer.UI.Common;
 using ITCC.VkPlayer.Utils;
@@ -13,6 +16,7 @@ namespace ITCC.VkPlayer
     /// </summary>
     public partial class App : Application
     {
+        private static ILongTaskRunner _currentRunner;
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -58,6 +62,31 @@ namespace ITCC.VkPlayer
         public static void RunOnUiThread(Action action)
         {
             Current.Dispatcher.Invoke(action);
+        }
+
+        public static void ClosingHandler(object sender, CancelEventArgs args)
+        {
+            Current.Windows.OfType<LogWindow>().SingleOrDefault()?.Close();
+        }
+
+        public static void GoToWindow<TWindow>(Window current, Action<TWindow> prepareAction = null, bool preserveSize = false)
+            where TWindow : Window, ILongTaskRunner, new()
+        {
+            var window = new TWindow();
+            window.Top = current.Top + (current.Height - window.Height) / 2;
+            window.Left = current.Left + (current.Width - window.Width) / 2;
+            prepareAction?.Invoke(window);
+            if (preserveSize)
+            {
+                window.Width = current.ActualHeight;
+                window.Width = current.ActualWidth;
+            }
+            window.Show();
+            window.Closing += ClosingHandler;
+            _currentRunner = window;
+            current.Closing -= ClosingHandler;
+            current.Close();
+            LogMessage(LogLevel.Debug, $"Went to window {typeof(TWindow).Name}");
         }
 
         private void App_OnExit(object sender, ExitEventArgs e)

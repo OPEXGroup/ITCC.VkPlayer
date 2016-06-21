@@ -11,9 +11,6 @@ namespace ITCC.VkPlayer.UI.Windows
         {
             InitializeComponent();
 
-#if DEBUG
-
-#endif
         }
     }
 }

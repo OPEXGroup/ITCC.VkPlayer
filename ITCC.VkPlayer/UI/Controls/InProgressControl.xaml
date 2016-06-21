@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="ITCC.VkPlayer.UI.Controls.InProgressControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ITCC.VkPlayer.UI.Controls"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300"
+             Loaded="InProgressControl_OnLoaded">
+    <Grid Panel.ZIndex="100" Height="150" Width="200">
+        <xctk:BusyIndicator x:Name="InProgressIndicator">
+            <xctk:BusyIndicator.BusyContent>
+                <Grid>
+                    <TextBlock x:Name="BusyTextBlock"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               Height="25"
+                               VerticalAlignment="Top" />
+
+                    <Button x:Name="CancelTaskButton"
+                            Content="Отменить"
+                            Click="CancelTaskButton_OnClick"
+                            HorizontalAlignment="Center"
+                            Margin="2 30 0 0"
+                            VerticalAlignment="Bottom"
+                            IsCancel="True"
+                            ToolTip="Отмена текущей операции"/>
+                </Grid>
+            </xctk:BusyIndicator.BusyContent>
+        </xctk:BusyIndicator>
+    </Grid>
+</UserControl>
