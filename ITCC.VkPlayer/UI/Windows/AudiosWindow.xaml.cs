@@ -103,11 +103,11 @@ namespace ITCC.VkPlayer.UI.Windows
             TogglePlayButton.Content = "Играть";
         }
 
-        private void Resume()
+        private async void Resume()
         {
             if (_justLoaded)
             {
-                GoToNextSong();
+                await GoToNextSong();
             }
             _player.Play();
             _isPlaying = true;
