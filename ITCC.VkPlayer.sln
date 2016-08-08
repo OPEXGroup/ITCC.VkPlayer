@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITCC.VkPlayer", "ITCC.VkPlayer\ITCC.VkPlayer.csproj", "{3F7E5DC3-D58C-48C3-B5CD-21E0A45EA2D1}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITCC.HTTP", "ITCC.Library\ITCC.HTTP\ITCC.HTTP.csproj", "{77016AD7-9655-4918-832C-D26A767E29B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VkNet", "vk\VkNet\VkNet.csproj", "{9CB320EE-5F9B-4DF3-9897-C3D20C296DE7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Griffin.Core", "ITCC.Library\Griffin.Framework\src\Griffin.Framework\Griffin.Core\Griffin.Core.csproj", "{744709D5-D4D5-4551-9EBD-CBD7BDF58F5F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITCC.UI", "ITCC.Library\ITCC.UI\ITCC.UI.csproj", "{07D36841-8876-437C-B7A4-CBF1012513EB}"
 EndProject
@@ -37,10 +35,6 @@ Global
 		{9CB320EE-5F9B-4DF3-9897-C3D20C296DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CB320EE-5F9B-4DF3-9897-C3D20C296DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CB320EE-5F9B-4DF3-9897-C3D20C296DE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{744709D5-D4D5-4551-9EBD-CBD7BDF58F5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{744709D5-D4D5-4551-9EBD-CBD7BDF58F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{744709D5-D4D5-4551-9EBD-CBD7BDF58F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{744709D5-D4D5-4551-9EBD-CBD7BDF58F5F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{07D36841-8876-437C-B7A4-CBF1012513EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{07D36841-8876-437C-B7A4-CBF1012513EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07D36841-8876-437C-B7A4-CBF1012513EB}.Release|Any CPU.ActiveCfg = Release|Any CPU

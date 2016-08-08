@@ -1,6 +1,6 @@
 [submodule "ITCC.Library"]
 	path = ITCC.Library
-	url = git@gitlab.itcc.company:OPEXGroup/ITCC.Library.git
+	url = git@github.com:OPEXGroup/ITCC.Library.git
 [submodule "vk"]
 	path = vk
 	url = git@gitlab.itcc.company:OPEXGroup/vk.git

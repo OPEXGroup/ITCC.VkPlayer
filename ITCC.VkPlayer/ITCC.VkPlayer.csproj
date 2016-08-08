@@ -167,10 +167,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ITCC.Library\Griffin.Framework\src\Griffin.Framework\Griffin.Core\Griffin.Core.csproj">
-      <Project>{744709d5-d4d5-4551-9ebd-cbd7bdf58f5f}</Project>
-      <Name>Griffin.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ITCC.Library\ITCC.HTTP\ITCC.HTTP.csproj">
       <Project>{77016ad7-9655-4918-832c-d26a767e29b4}</Project>
       <Name>ITCC.HTTP</Name>
