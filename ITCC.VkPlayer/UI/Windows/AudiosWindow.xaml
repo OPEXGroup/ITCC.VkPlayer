@@ -107,7 +107,9 @@
             
 
             <ListView Name="AudiosListView"
-                      Grid.Row="2">
+                      Grid.Row="2"
+                      IsTextSearchEnabled="True"
+                      TextSearch.TextPath="FullName">
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="viewModels:AudioViewModel">
                         <Border BorderThickness="1">

@@ -40,7 +40,7 @@ namespace ITCC.VkPlayer.Logging
         public static void FinalizeLoggers()
         {
             App.LogMessage(LogLevel.Info, "Приложение завершено");
-            _fileLogger?.FlushBuffer();
+            _fileLogger?.Flush().Wait();
         }
 
         public static void DoNotShowMessageBoxes()
